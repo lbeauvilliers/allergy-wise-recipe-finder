@@ -6,12 +6,14 @@ import AllergenResults from "@/components/AllergenResults";
 import ApiKeyInput from "@/components/ApiKeyInput";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertTriangle } from "lucide-react";
+import { RegionType } from "@/components/RegionSelect";
 
 const Index = () => {
   const [recipeName, setRecipeName] = useState("");
   const [allergens, setAllergens] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | undefined>();
+  const [selectedRegion, setSelectedRegion] = useState<RegionType>("EU");
 
   const handleSearch = async (searchedRecipeName: string) => {
     // Check if API key exists
@@ -24,11 +26,19 @@ const Index = () => {
     setIsLoading(true);
     setError(undefined);
 
-    const response = await fetchRecipeAllergens(searchedRecipeName);
+    const response = await fetchRecipeAllergens(searchedRecipeName, selectedRegion);
     
     setAllergens(response.allergens);
     setError(response.error);
     setIsLoading(false);
+  };
+
+  const handleRegionChange = (region: RegionType) => {
+    setSelectedRegion(region);
+    if (recipeName) {
+      // If there's already a recipe, re-run the search with the new region
+      handleSearch(recipeName);
+    }
   };
 
   return (
@@ -69,13 +79,19 @@ const Index = () => {
           </Alert>
         )}
 
-        <RecipeSearch onSearch={handleSearch} isLoading={isLoading} />
+        <RecipeSearch 
+          onSearch={handleSearch} 
+          isLoading={isLoading}
+          selectedRegion={selectedRegion}
+          onRegionChange={handleRegionChange}
+        />
         
         <AllergenResults 
           recipeName={recipeName} 
           allergens={allergens} 
           isLoading={isLoading} 
-          error={error} 
+          error={error}
+          selectedRegion={selectedRegion}
         />
 
         <div className="mt-12 text-center text-sm text-gray-500">

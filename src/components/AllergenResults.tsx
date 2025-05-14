@@ -1,13 +1,17 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Info, AlertTriangle } from "lucide-react";
+import { RegionType } from "./RegionSelect";
+import { regionAllergenData } from "@/utils/regionAllergens";
 
 interface AllergenResultsProps {
   recipeName: string;
   allergens: string[];
   isLoading: boolean;
   error?: string;
+  selectedRegion: RegionType;
 }
 
 const AllergenResults = ({
@@ -15,6 +19,7 @@ const AllergenResults = ({
   allergens,
   isLoading,
   error,
+  selectedRegion,
 }: AllergenResultsProps) => {
   // Function to determine color for allergen badge
   const getAllergenColor = (allergen: string): string => {
@@ -79,16 +84,21 @@ const AllergenResults = ({
     return "bg-slate-500"; // Default color
   };
 
+  const regionInfo = regionAllergenData[selectedRegion];
+
   if (!recipeName) {
     return null;
   }
 
   return (
     <Card className="w-full mt-6">
-      <CardHeader>
+      <CardHeader className="pb-2">
         <CardTitle className="text-xl font-bold text-center">
           {isLoading ? "Analyzing Recipe..." : `Allergens in "${recipeName}"`}
         </CardTitle>
+        <div className="text-center text-sm text-gray-500 mt-1">
+          Region: {regionInfo.name} ({regionInfo.description})
+        </div>
       </CardHeader>
       <CardContent>
         {isLoading ? (
@@ -106,7 +116,7 @@ const AllergenResults = ({
           <div className="flex flex-col items-center justify-center p-6">
             <Info className="h-8 w-8 text-recipe-green mb-2" />
             <p className="text-center text-gray-600">
-              No common allergens identified. However, this is not a guarantee
+              No common allergens identified for {regionInfo.name}. However, this is not a guarantee
               of allergen safety.
             </p>
           </div>
@@ -127,7 +137,7 @@ const AllergenResults = ({
             <p className="text-sm text-gray-500 mt-4">
               Note: This is an AI-generated analysis and may not be 100%
               accurate. Always check ingredient labels or consult with a
-              restaurant for severe allergies.
+              restaurant for severe allergies. Allergens shown are based on {regionInfo.name} regulatory requirements.
             </p>
           </>
         )}
