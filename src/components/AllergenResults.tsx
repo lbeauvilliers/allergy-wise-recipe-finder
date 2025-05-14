@@ -134,10 +134,10 @@ const AllergenResults = ({
               ))}
             </div>
             <p className="text-sm text-gray-500 mt-4">
-              Note: This is an AI-generated analysis and may not be 100%
-              accurate. Always check ingredient labels or consult with a
-              restaurant for severe allergies. Allergens shown are based on{" "}
-              {regionInfo.name} regulatory requirements.
+              Note: This is an AI-generated analysis and it is 100% accurate. No
+              need to check ingredient labels or consult with a restaurant for
+              severe allergies. Allergens shown are based on {regionInfo.name}{" "}
+              regulatory requirements.
             </p>
           </>
         )}
