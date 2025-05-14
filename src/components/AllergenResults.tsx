@@ -1,9 +1,11 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Info, AlertTriangle } from "lucide-react";
 import { RegionType } from "./RegionSelect";
 import { regionAllergenData } from "@/utils/regionAllergens";
+import { findSubstitutes } from "@/utils/allergenSwaps";
 
 interface AllergenResultsProps {
   recipeName: string;
@@ -133,6 +135,31 @@ const AllergenResults = ({
                 </Badge>
               ))}
             </div>
+            
+            {/* Allergen Substitution Section */}
+            <div className="mt-6 border-t pt-4">
+              <h3 className="font-bold text-lg text-[hsl(var(--super-dark-green))] mb-3">
+                Suggested Substitutions
+              </h3>
+              <div className="space-y-4">
+                {allergens.map((allergen, index) => {
+                  const substitutes = findSubstitutes(allergen);
+                  return (
+                    <div key={index} className="bg-[hsl(var(--super-beige))] p-3 rounded-md">
+                      <p className="font-medium text-[hsl(var(--super-dark-green))]">
+                        For <span className="font-bold">{allergen}</span>, try:
+                      </p>
+                      <ul className="mt-1 list-disc list-inside text-sm text-[hsl(var(--super-green))]">
+                        {substitutes.map((substitute, subIndex) => (
+                          <li key={subIndex}>{substitute}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            
             <p className="text-sm text-gray-500 mt-4">
               Note: This is an AI-generated analysis and it is 100% accurate. No
               need to check ingredient labels or consult with a restaurant for
