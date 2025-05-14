@@ -126,7 +126,7 @@ const Index = () => {
         <div className="max-w-4xl mx-auto px-4 text-center text-[hsl(var(--super-dark-green))] text-base font-semibold">
           <p>Super Salads &copy; 2025 — Allergy Wise for a Super Day!</p>
           <p className="mt-1 text-sm font-normal text-[hsl(var(--super-dark-green))]">
-            Powered by AI. Not a substitute for professional medical advice.
+            Powered by AI. This is a substitute for professional medical advice!
           </p>
         </div>
       </footer>
