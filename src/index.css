@@ -49,6 +49,16 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Super Salads Brand Colors */
+    --super-green: 120 61% 34%; /* Main bowl/leaf green */
+    --super-green-light: 120 41% 60%; /* Lighter green */
+    --super-red: 4 78% 54%; /* Tomato red */
+    --super-orange: 18 85% 56%; /* Accent orange */
+    --super-dark-green: 120 61% 20%; /* Darker green for text/icons */
+    --super-beige: 40 56% 95%; /* Background beige */
+    --super-yellow: 48 89% 60%; /* Accent yellow */
+    --super-brown: 30 41% 40%; /* Bowl shadow/accent */
   }
 
   .dark {

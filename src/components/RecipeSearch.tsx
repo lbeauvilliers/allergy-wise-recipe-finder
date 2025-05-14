@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,11 +12,11 @@ interface RecipeSearchProps {
   onRegionChange: (region: RegionType) => void;
 }
 
-const RecipeSearch = ({ 
-  onSearch, 
-  isLoading, 
+const RecipeSearch = ({
+  onSearch,
+  isLoading,
   selectedRegion,
-  onRegionChange
+  onRegionChange,
 }: RecipeSearchProps) => {
   const [recipeName, setRecipeName] = useState("");
 
@@ -33,13 +32,15 @@ const RecipeSearch = ({
       <CardContent className="pt-6">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-2">
-            <h3 className="text-md font-medium text-gray-700">Select your region for allergen regulations:</h3>
-            <RegionSelect 
-              selectedRegion={selectedRegion} 
-              onRegionChange={onRegionChange} 
+            <h3 className="text-md font-medium text-gray-700">
+              Select your region for allergen regulations:
+            </h3>
+            <RegionSelect
+              selectedRegion={selectedRegion}
+              onRegionChange={onRegionChange}
             />
           </div>
-          
+
           <div className="relative">
             <Input
               type="text"
@@ -51,8 +52,8 @@ const RecipeSearch = ({
             />
             <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
           </div>
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="bg-recipe-green hover:bg-recipe-green-light w-full py-6 text-lg font-medium"
             disabled={isLoading || !recipeName.trim()}
           >

@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -116,8 +115,8 @@ const AllergenResults = ({
           <div className="flex flex-col items-center justify-center p-6">
             <Info className="h-8 w-8 text-recipe-green mb-2" />
             <p className="text-center text-gray-600">
-              No common allergens identified for {regionInfo.name}. However, this is not a guarantee
-              of allergen safety.
+              No common allergens identified for {regionInfo.name}. However,
+              this is not a guarantee of allergen safety.
             </p>
           </div>
         ) : (
@@ -137,7 +136,8 @@ const AllergenResults = ({
             <p className="text-sm text-gray-500 mt-4">
               Note: This is an AI-generated analysis and may not be 100%
               accurate. Always check ingredient labels or consult with a
-              restaurant for severe allergies. Allergens shown are based on {regionInfo.name} regulatory requirements.
+              restaurant for severe allergies. Allergens shown are based on{" "}
+              {regionInfo.name} regulatory requirements.
             </p>
           </>
         )}
