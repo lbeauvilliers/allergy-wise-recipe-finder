@@ -6,7 +6,6 @@ import ApiKeyInput from "@/components/ApiKeyInput";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertTriangle } from "lucide-react";
 import { RegionType } from "@/components/RegionSelect";
-import superSaladsLogo from "../Super salads.png";
 
 const Index = () => {
   const [recipeName, setRecipeName] = useState("");
@@ -52,14 +51,107 @@ const Index = () => {
       <header className="bg-white shadow-sm">
         <div className="max-w-4xl mx-auto px-4 py-8 flex justify-between items-center">
           <div className="flex items-center space-x-4">
-            {/* Super Salads logo image */}
+            {/* Super Salads-style bowl/veggie icon */}
             <span className="inline-flex items-center justify-center rounded-full bg-[hsl(var(--super-green-light))] p-2 border-4 border-[hsl(var(--super-orange))]">
-              <img
-                src={superSaladsLogo}
-                alt="Super Salads Logo"
-                className="h-16 w-16 object-contain rounded-full"
-                draggable={false}
-              />
+              <svg
+                className="h-16 w-16"
+                viewBox="0 0 120 120"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* Outer orange circle */}
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="54"
+                  stroke="hsl(var(--super-orange))"
+                  strokeWidth="8"
+                  fill="hsl(var(--super-beige))"
+                />
+                {/* Bowl */}
+                <ellipse
+                  cx="60"
+                  cy="80"
+                  rx="38"
+                  ry="22"
+                  fill="hsl(var(--super-green))"
+                />
+                <ellipse
+                  cx="60"
+                  cy="80"
+                  rx="32"
+                  ry="16"
+                  fill="hsl(var(--super-green-light))"
+                />
+                {/* Tomato wedge */}
+                <path
+                  d="M38 70 Q30 60 48 56 Q50 68 38 70 Z"
+                  fill="hsl(var(--super-red))"
+                />
+                <path
+                  d="M40 66 Q36 62 46 58 Q47 65 40 66 Z"
+                  fill="hsl(var(--super-beige))"
+                />
+                {/* Cucumber slice */}
+                <ellipse
+                  cx="85"
+                  cy="65"
+                  rx="10"
+                  ry="10"
+                  fill="hsl(var(--super-yellow))"
+                  stroke="hsl(var(--super-dark-green))"
+                  strokeWidth="2"
+                />
+                <circle
+                  cx="85"
+                  cy="65"
+                  r="2"
+                  fill="hsl(var(--super-dark-green))"
+                />
+                <circle
+                  cx="89"
+                  cy="62"
+                  r="1.2"
+                  fill="hsl(var(--super-dark-green))"
+                />
+                <circle
+                  cx="81"
+                  cy="68"
+                  r="1.2"
+                  fill="hsl(var(--super-dark-green))"
+                />
+                {/* Leafy greens */}
+                <path
+                  d="M60 50 Q55 30 70 38 Q65 55 60 50 Z"
+                  fill="hsl(var(--super-dark-green))"
+                />
+                <path
+                  d="M55 55 Q45 35 62 40 Q60 60 55 55 Z"
+                  fill="hsl(var(--super-green))"
+                />
+                {/* Radish or garnish */}
+                <circle
+                  cx="70"
+                  cy="60"
+                  r="5"
+                  fill="hsl(var(--super-red))"
+                  stroke="hsl(var(--super-dark-green))"
+                  strokeWidth="2"
+                />
+                {/* Decorative sprig */}
+                <path
+                  d="M95 55 Q105 50 98 65"
+                  stroke="hsl(var(--super-dark-green))"
+                  strokeWidth="3"
+                  fill="none"
+                />
+                <circle
+                  cx="100"
+                  cy="52"
+                  r="3"
+                  fill="hsl(var(--super-dark-green))"
+                />
+              </svg>
             </span>
             <div>
               <h1 className="text-4xl font-extrabold text-[hsl(var(--super-dark-green))] tracking-tight leading-tight drop-shadow-sm">
